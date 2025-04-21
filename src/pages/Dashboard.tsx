@@ -1,4 +1,3 @@
-
 import { 
   BarChart3, 
   Users, 
@@ -60,7 +59,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
           title="Total Revenue"
-          value="$45,231.89"
+          value="₹45,231.89"
           icon={<DollarSign size={20} />}
           trend={{ value: "20.1%", positive: true }}
         />
