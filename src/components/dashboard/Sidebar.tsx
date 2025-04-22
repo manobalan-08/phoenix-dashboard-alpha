@@ -9,6 +9,8 @@ import {
   Settings,
   Menu,
   ChevronRight,
+  Wallet,
+  PiggyBank,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -28,6 +30,16 @@ export function Sidebar({ isMobile, expanded, setExpanded }: SidebarProps) {
       title: "Employees",
       href: "/employees",
       icon: <Users size={20} />,
+    },
+    {
+      title: "Funds",
+      href: "/funds",
+      icon: <Wallet size={20} />,
+    },
+    {
+      title: "Investments",
+      href: "/investments",
+      icon: <PiggyBank size={20} />,
     },
     {
       title: "Analytics",

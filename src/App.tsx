@@ -9,11 +9,12 @@ import NotFound from "./pages/NotFound";
 import { DashboardLayout } from "./components/dashboard/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import Employees from "./pages/Employees";
+import Funds from "./pages/Funds";
+import Investments from "./pages/Investments";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
 
 function App() {
-  // Create a new QueryClient instance within the component
   const queryClient = new QueryClient();
   
   return (
@@ -29,6 +30,16 @@ function App() {
                 <Employees />
               </DashboardLayout>
             } />
+            <Route path="/funds" element={
+              <DashboardLayout>
+                <Funds />
+              </DashboardLayout>
+            } />
+            <Route path="/investments" element={
+              <DashboardLayout>
+                <Investments />
+              </DashboardLayout>
+            } />
             <Route path="/analytics" element={
               <DashboardLayout>
                 <Analytics />
@@ -39,7 +50,6 @@ function App() {
                 <Settings />
               </DashboardLayout>
             } />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
