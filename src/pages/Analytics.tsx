@@ -1,19 +1,17 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  BarChart,
-  Bar,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
-  LineChart,
-  Line,
   PieChart,
   Pie,
   Cell,
+  BarChart,
+  Bar,
 } from "recharts";
 
 const monthlyData = [
@@ -34,22 +32,106 @@ const departmentData = [
   { name: "IT", value: 4 },
 ];
 
-const COLORS = ["#9b87f5", "#7E69AB", "#6E59A5", "#E5DEFF", "#D3E4FD", "#FDE1D3"];
+const employeeScoreData = {
+  "Manobalan M": [
+    { month: "Jan", score: 92 },
+    { month: "Feb", score: 94 },
+    { month: "Mar", score: 91 },
+    { month: "Apr", score: 93 },
+    { month: "May", score: 92 },
+    { month: "Jun", score: 95 }
+  ],
+  "Akshaya M": [
+    { month: "Jan", score: 88 },
+    { month: "Feb", score: 90 },
+    { month: "Mar", score: 89 },
+    { month: "Apr", score: 91 },
+    { month: "May", score: 90 },
+    { month: "Jun", score: 92 }
+  ],
+  "Gayathry": [
+    { month: "Jan", score: 94 },
+    { month: "Feb", score: 93 },
+    { month: "Mar", score: 95 },
+    { month: "Apr", score: 94 },
+    { month: "May", score: 96 },
+    { month: "Jun", score: 95 }
+  ],
+  "Dheeraj": [
+    { month: "Jan", score: 85 },
+    { month: "Feb", score: 87 },
+    { month: "Mar", score: 86 },
+    { month: "Apr", score: 88 },
+    { month: "May", score: 87 },
+    { month: "Jun", score: 89 }
+  ],
+  "Vikash S": [
+    { month: "Jan", score: 91 },
+    { month: "Feb", score: 90 },
+    { month: "Mar", score: 92 },
+    { month: "Apr", score: 91 },
+    { month: "May", score: 93 },
+    { month: "Jun", score: 92 }
+  ],
+  "Vomkar BS": [
+    { month: "Jan", score: 87 },
+    { month: "Feb", score: 89 },
+    { month: "Mar", score: 88 },
+    { month: "Apr", score: 90 },
+    { month: "May", score: 89 },
+    { month: "Jun", score: 91 }
+  ],
+  "Theya KS": [
+    { month: "Jan", score: 93 },
+    { month: "Feb", score: 92 },
+    { month: "Mar", score: 94 },
+    { month: "Apr", score: 93 },
+    { month: "May", score: 95 },
+    { month: "Jun", score: 94 }
+  ],
+  "Swathy": [
+    { month: "Jan", score: 89 },
+    { month: "Feb", score: 91 },
+    { month: "Mar", score: 90 },
+    { month: "Apr", score: 92 },
+    { month: "May", score: 91 },
+    { month: "Jun", score: 93 }
+  ],
+  "Abhishri": [
+    { month: "Jan", score: 86 },
+    { month: "Feb", score: 88 },
+    { month: "Mar", score: 87 },
+    { month: "Apr", score: 89 },
+    { month: "May", score: 88 },
+    { month: "Jun", score: 90 }
+  ],
+  "Jayavarshini": [
+    { month: "Jan", score: 90 },
+    { month: "Feb", score: 89 },
+    { month: "Mar", score: 91 },
+    { month: "Apr", score: 90 },
+    { month: "May", score: 92 },
+    { month: "Jun", score: 91 }
+  ],
+  "Adarsha": [
+    { month: "Jan", score: 84 },
+    { month: "Feb", score: 86 },
+    { month: "Mar", score: 85 },
+    { month: "Apr", score: 87 },
+    { month: "May", score: 86 },
+    { month: "Jun", score: 88 }
+  ],
+  "Logavarshini": [
+    { month: "Jan", score: 88 },
+    { month: "Feb", score: 90 },
+    { month: "Mar", score: 89 },
+    { month: "Apr", score: 91 },
+    { month: "May", score: 90 },
+    { month: "Jun", score: 92 }
+  ]
+};
 
-const employeePerformanceData = [
-  { name: "Manobalan M", score: 92 },
-  { name: "Akshaya M", score: 88 },
-  { name: "Gayathry", score: 94 },
-  { name: "Dheeraj", score: 85 },
-  { name: "Vikash S", score: 91 },
-  { name: "Vomkar BS", score: 87 },
-  { name: "Theya KS", score: 93 },
-  { name: "Swathy", score: 89 },
-  { name: "Abhishri", score: 86 },
-  { name: "Jayavarshini", score: 90 },
-  { name: "Adarsha", score: 84 },
-  { name: "Logavarshini", score: 88 },
-];
+const COLORS = ["#9b87f5", "#7E69AB", "#6E59A5", "#E5DEFF", "#D3E4FD", "#FDE1D3"];
 
 export default function Analytics() {
   return (
@@ -114,26 +196,28 @@ export default function Analytics() {
 
         <Card className="lg:col-span-2">
           <CardContent className="pt-6">
-            <h2 className="text-lg font-medium mb-6">Employee Performance Score</h2>
-            <div className="h-96">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={employeePerformanceData}
-                  margin={{ top: 10, right: 30, left: 0, bottom: 20 }}
-                  layout="vertical"
-                >
-                  <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
-                  <XAxis type="number" domain={[0, 100]} />
-                  <YAxis type="category" dataKey="name" width={150} />
-                  <Tooltip />
-                  <Bar
-                    dataKey="score"
-                    name="Performance Score"
-                    fill="#9b87f5"
-                    radius={[0, 4, 4, 0]}
-                  />
-                </BarChart>
-              </ResponsiveContainer>
+            <h2 className="text-lg font-medium mb-6">Individual Employee Performance Trends</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Object.entries(employeeScoreData).map(([employee, data]) => (
+                <div key={employee} className="h-[200px]">
+                  <p className="text-sm font-medium mb-2">{employee}</p>
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={data} margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                      <XAxis dataKey="month" tick={{ fontSize: 12 }} />
+                      <YAxis domain={[80, 100]} tick={{ fontSize: 12 }} />
+                      <Tooltip />
+                      <Line
+                        type="monotone"
+                        dataKey="score"
+                        stroke="#9b87f5"
+                        strokeWidth={2}
+                        dot={{ fill: "#9b87f5" }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              ))}
             </div>
           </CardContent>
         </Card>
