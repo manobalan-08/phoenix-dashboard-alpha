@@ -3,10 +3,14 @@ import {
   Users, 
   DollarSign, 
   LineChart, 
-  ArrowUpRight 
+  ArrowUpRight,
+  Trophy,
+  Star,
+  Award
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { StatCard } from "@/components/dashboard/StatCard";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
   BarChart,
   Bar,
@@ -51,6 +55,33 @@ const productData = [
 
 const COLORS = ["#9b87f5", "#7E69AB", "#6E59A5", "#D6BCFA"];
 
+const bestContributors = [
+  {
+    name: "Sarah Chen",
+    image: "https://images.unsplash.com/photo-1501286353178-1ec871a6aa38",
+    award: "Employee of the Year",
+    description: "Outstanding leadership and innovation",
+    icon: Trophy,
+    color: "#9b87f5"
+  },
+  {
+    name: "Michael Ross",
+    image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1",
+    award: "Innovation Star",
+    description: "Exceptional project deliveries",
+    icon: Star,
+    color: "#7E69AB"
+  },
+  {
+    name: "Lisa Thompson",
+    image: "https://images.unsplash.com/photo-1487252665478-49b61b47f302",
+    award: "Customer Excellence",
+    description: "Outstanding client satisfaction",
+    icon: Award,
+    color: "#6E59A5"
+  }
+];
+
 export default function Dashboard() {
   return (
     <div className="space-y-6">
@@ -84,6 +115,43 @@ export default function Dashboard() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Card className="p-6 col-span-full">
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-lg font-medium">Best Contributors 2025</h3>
+            <Trophy className="h-6 w-6 text-primary" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {bestContributors.map((contributor) => {
+              const Icon = contributor.icon;
+              return (
+                <div
+                  key={contributor.name}
+                  className="flex flex-col items-center text-center space-y-4 p-4 rounded-lg hover:bg-accent transition-colors"
+                >
+                  <div className="relative">
+                    <Avatar className="h-24 w-24 border-4" style={{ borderColor: contributor.color }}>
+                      <AvatarImage src={contributor.image} alt={contributor.name} />
+                      <AvatarFallback>{contributor.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                    </Avatar>
+                    <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-1 shadow-lg">
+                      <Icon className="h-6 w-6" style={{ color: contributor.color }} />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="font-semibold">{contributor.name}</h4>
+                    <p className="text-sm font-medium text-primary" style={{ color: contributor.color }}>
+                      {contributor.award}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {contributor.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Card>
+
         <Card className="p-6">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-medium">Sales Overview</h3>
