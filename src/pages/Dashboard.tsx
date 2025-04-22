@@ -3,7 +3,6 @@ import {
   Users, 
   DollarSign, 
   LineChart, 
-  ArrowUpRight,
   Trophy,
   Star,
   Award
@@ -11,6 +10,7 @@ import {
 import { Card } from "@/components/ui/card";
 import { StatCard } from "@/components/dashboard/StatCard";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { RecentActivities } from "@/components/dashboard/RecentActivities";
 import {
   BarChart,
   Bar,
@@ -226,52 +226,7 @@ export default function Dashboard() {
           </div>
         </Card>
 
-        <Card className="p-6">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-medium">Recent Activity</h3>
-            <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
-          </div>
-          <div className="space-y-5">
-            {[
-              {
-                title: "New project created",
-                description: "Web application design project",
-                time: "3 hours ago",
-              },
-              {
-                title: "Client meeting scheduled",
-                description: "Meeting with potential client",
-                time: "Yesterday",
-              },
-              {
-                title: "New feature deployed",
-                description: "User authentication feature",
-                time: "2 days ago",
-              },
-              {
-                title: "Staff meeting",
-                description: "Weekly team progress review",
-                time: "3 days ago",
-              },
-              {
-                title: "Project completed",
-                description: "Mobile app development finished",
-                time: "1 week ago",
-              },
-            ].map((item, i) => (
-              <div key={i} className="flex items-start">
-                <div className="w-2 h-2 mt-2 rounded-full bg-primary mr-4"></div>
-                <div className="flex-1">
-                  <p className="font-medium">{item.title}</p>
-                  <p className="text-muted-foreground text-sm">
-                    {item.description}
-                  </p>
-                </div>
-                <div className="text-xs text-muted-foreground">{item.time}</div>
-              </div>
-            ))}
-          </div>
-        </Card>
+        <RecentActivities />
       </div>
     </div>
   );
