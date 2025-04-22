@@ -1,10 +1,11 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
+import { Textarea } from "@/components/ui/textarea";
+import { FileUp } from "lucide-react";
 
 export default function Settings() {
   return (
@@ -12,9 +13,10 @@ export default function Settings() {
       <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
       
       <Tabs defaultValue="profile" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 max-w-md mb-6">
+        <TabsList className="grid w-full grid-cols-4 max-w-xl mb-6">
           <TabsTrigger value="profile">Profile</TabsTrigger>
           <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="achievements">Skills & Achievements</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
         </TabsList>
         
@@ -107,6 +109,69 @@ export default function Settings() {
               
               <div className="flex justify-end">
                 <Button>Update Account</Button>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        <TabsContent value="achievements" className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Skills & Achievements</CardTitle>
+              <CardDescription>
+                Showcase your professional certifications, skills, and achievements
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="certifications">Certifications</Label>
+                  <div className="mt-2 grid gap-4">
+                    <div className="flex items-center gap-4 p-4 border rounded-lg">
+                      <Button variant="outline" className="h-auto p-4 flex-col items-center gap-2">
+                        <FileUp className="h-6 w-6" />
+                        <span className="text-xs">Upload Certificate</span>
+                      </Button>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium">Upload your certifications</p>
+                        <p className="text-sm text-muted-foreground">
+                          Supported formats: PDF, JPG, PNG (max 5MB)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="skills">Key Skills</Label>
+                  <Textarea
+                    id="skills"
+                    placeholder="List your key professional skills..."
+                    className="min-h-[100px]"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="company-contributions">Company Contributions</Label>
+                  <Textarea
+                    id="company-contributions"
+                    placeholder="Describe your major contributions and achievements in the company..."
+                    className="min-h-[150px]"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="achievements">Other Achievements</Label>
+                  <Textarea
+                    id="achievements"
+                    placeholder="Share your other professional achievements, awards, and recognitions..."
+                    className="min-h-[150px]"
+                  />
+                </div>
+              </div>
+              
+              <div className="flex justify-end">
+                <Button>Save Changes</Button>
               </div>
             </CardContent>
           </Card>
