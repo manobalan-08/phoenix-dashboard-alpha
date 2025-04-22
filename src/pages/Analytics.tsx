@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import {
   LineChart,
@@ -12,6 +13,7 @@ import {
   Cell,
   BarChart,
   Bar,
+  Legend,
 } from "recharts";
 
 const monthlyData = [
