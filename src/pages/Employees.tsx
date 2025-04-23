@@ -25,6 +25,9 @@ const employees = [
   { id: 10, name: "Jayavarshini", role: "Content Writer", status: "Active", email: "jayavarshini@startup.com", phone: "+1 (555) 012-3456", department: "Marketing" },
   { id: 11, name: "Adarsha", role: "Systems Administrator", status: "Active", email: "adarsha@startup.com", phone: "+1 (555) 321-6547", department: "IT" },
   { id: 12, name: "Logavarshini", role: "Customer Support", status: "Active", email: "logavarshini@startup.com", phone: "+1 (555) 654-3210", department: "Support" },
+  // New employees
+  { id: 13, name: "Sri Vignesh S", role: "DevOps Engineer", status: "Active", email: "srivignesh@startup.com", phone: "+1 (555) 765-4321", department: "Engineering" },
+  { id: 14, name: "Uma maheshwari", role: "QA Tester", status: "Active", email: "uma@startup.com", phone: "+1 (555) 876-5432", department: "Product" },
 ];
 
 export default function Employees() {
@@ -106,3 +109,4 @@ export default function Employees() {
     </div>
   );
 }
+

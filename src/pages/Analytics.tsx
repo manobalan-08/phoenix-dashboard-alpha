@@ -130,6 +130,23 @@ const employeeScoreData = {
     { month: "Apr", score: 91 },
     { month: "May", score: 90 },
     { month: "Jun", score: 92 }
+  ],
+  // New employees' performance
+  "Sri Vignesh S": [
+    { month: "Jan", score: 90 },
+    { month: "Feb", score: 92 },
+    { month: "Mar", score: 93 },
+    { month: "Apr", score: 91 },
+    { month: "May", score: 92 },
+    { month: "Jun", score: 94 }
+  ],
+  "Uma maheshwari": [
+    { month: "Jan", score: 87 },
+    { month: "Feb", score: 88 },
+    { month: "Mar", score: 89 },
+    { month: "Apr", score: 90 },
+    { month: "May", score: 91 },
+    { month: "Jun", score: 92 }
   ]
 };
 
@@ -227,3 +244,4 @@ export default function Analytics() {
     </div>
   );
 }
+
