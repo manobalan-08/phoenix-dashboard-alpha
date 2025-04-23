@@ -1,6 +1,31 @@
 
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+} from "@/components/ui/select";
+
+const INDIAN_INVESTMENT_TYPES = [
+  "Mutual Fund",
+  "Equity Shares",
+  "Debentures",
+  "Government Bonds",
+  "Recurring Deposits",
+  "Fixed Deposits",
+  "Public Provident Fund (PPF)",
+  "National Pension Scheme (NPS)",
+  "Sukanya Samriddhi Yojana",
+  "Real Estate",
+  "Gold ETF",
+  "Unit Linked Insurance Plan (ULIP)",
+  "Tax Saving FD",
+  "Infrastructure Bonds",
+  "Post Office Schemes",
+];
 
 export const InvestmentsForm: React.FC = () => {
   const [investmentType, setInvestmentType] = useState("");
@@ -11,11 +36,18 @@ export const InvestmentsForm: React.FC = () => {
       <div className="flex flex-col gap-3">
         <div>
           <label className="text-sm font-medium">Investment Type</label>
-          <Input
-            placeholder="Mutual Fund, Equity, etc."
-            value={investmentType}
-            onChange={e => setInvestmentType(e.target.value)}
-          />
+          <Select value={investmentType} onValueChange={setInvestmentType}>
+            <SelectTrigger>
+              <SelectValue placeholder="Select Investment Type" />
+            </SelectTrigger>
+            <SelectContent>
+              {INDIAN_INVESTMENT_TYPES.map((type) => (
+                <SelectItem key={type} value={type}>
+                  {type}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
         <div>
           <label className="text-sm font-medium">Amount (INR)</label>

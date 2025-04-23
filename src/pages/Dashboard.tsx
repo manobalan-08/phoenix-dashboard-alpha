@@ -27,8 +27,8 @@ import {
 } from "recharts";
 import { BestContributorForm } from "@/components/dashboard/BestContributorForm";
 import React from "react";
+import { AiAdvisor } from "@/components/dashboard/AiAdvisor";
 
-// List of your employees (from Employees page)
 const employeeList = [
   "Manobalan M",
   "Akshaya M",
@@ -102,6 +102,8 @@ export default function Dashboard() {
   
   return (
     <div className="space-y-6">
+      <AiAdvisor />
+
       <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
