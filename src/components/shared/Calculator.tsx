@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
-import { calculator } from "lucide-react";
+import { Calculator as CalculatorIcon } from "lucide-react";
 
 interface CalculatorProps {
   title?: string;
@@ -35,7 +35,7 @@ export const Calculator: React.FC<CalculatorProps> = ({ title }) => {
     <div className="rounded-xl bg-white border p-4 mb-4 shadow flex flex-col gap-2 max-w-md">
       <div className="flex items-center gap-2 mb-1">
         <span className="font-semibold">{title || "Calculator"}</span>
-        <calculator size={18} className="text-purple-500" />
+        <CalculatorIcon size={18} className="text-purple-500" />
       </div>
       <div className="flex gap-2">
         <Input

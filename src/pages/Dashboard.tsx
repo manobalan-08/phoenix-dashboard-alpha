@@ -26,6 +26,7 @@ import {
   Cell,
 } from "recharts";
 import { BestContributorForm } from "@/components/dashboard/BestContributorForm";
+import React, { useState } from "react";
 
 // List of your employees (from Employees page)
 const employeeList = [
@@ -42,8 +43,6 @@ const employeeList = [
   "Adarsha",
   "Logavarshini",
 ];
-
-import React, { useState } from "react";
 
 const salesData = [
   { name: "Jan", amount: 4000 },
@@ -72,7 +71,7 @@ const productData = [
   { name: "Product D", value: 200 },
 ];
 
-const COLORS = ["#9b87f5", "#7E69AB", "#6E59A5", "#D6BCFA"];
+const COLORS = ["#9b87f5", "#7E69AB", "#6E59A5"];
 
 const bestContributors = [
   {
@@ -110,9 +109,7 @@ export default function Dashboard() {
 
   // You may adapt the original "bestContributors" UI to just take employee names
   const colors = ["#9b87f5", "#7E69AB", "#6E59A5"];
-  // Lucide icon
-  import { Trophy } from "lucide-react";
-
+  
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
