@@ -26,7 +26,7 @@ import {
   Cell,
 } from "recharts";
 import { BestContributorForm } from "@/components/dashboard/BestContributorForm";
-import React, { useState } from "react";
+import React from "react";
 
 // List of your employees (from Employees page)
 const employeeList = [
@@ -75,39 +75,29 @@ const COLORS = ["#9b87f5", "#7E69AB", "#6E59A5"];
 
 const bestContributors = [
   {
-    name: "Sarah Chen",
-    image: "https://images.unsplash.com/photo-1501286353178-1ec871a6aa38",
+    name: "Manobalan M",
     award: "Employee of the Year",
-    description: "Outstanding leadership and innovation",
     icon: Trophy,
     color: "#9b87f5"
   },
   {
-    name: "Michael Ross",
-    image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1",
+    name: "Akshaya M",
     award: "Innovation Star",
-    description: "Exceptional project deliveries",
     icon: Star,
     color: "#7E69AB"
   },
   {
-    name: "Lisa Thompson",
-    image: "https://images.unsplash.com/photo-1487252665478-49b61b47f302",
+    name: "Gayathry",
     award: "Customer Excellence",
-    description: "Outstanding client satisfaction",
     icon: Award,
     color: "#6E59A5"
   }
 ];
 
 export default function Dashboard() {
-  // Manage investment type input for each contributor
-  const [investmentTypes, setInvestmentTypes] = useState<{[name: string]: string}>({});
+  // Only show top 3 contributors
+  const topContributors = bestContributors;
 
-  // Show top 3 best contributors, rest can be omitted for now
-  const topContributors = employeeList.slice(0, 3);
-
-  // You may adapt the original "bestContributors" UI to just take employee names
   const colors = ["#9b87f5", "#7E69AB", "#6E59A5"];
   
   return (
@@ -148,32 +138,27 @@ export default function Dashboard() {
             <Trophy className="h-6 w-6 text-primary" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {topContributors.map((name, idx) => (
+            {topContributors.map((contributor, idx) => (
               <div
-                key={name}
+                key={contributor.name}
                 className="flex flex-col items-center text-center space-y-4 p-4 rounded-lg hover:bg-accent transition-colors"
               >
                 <div className="relative">
-                  <Avatar className="h-24 w-24 border-4" style={{ borderColor: colors[idx % colors.length] }}>
+                  <Avatar className="h-24 w-24 border-4" style={{ borderColor: contributor.color }}>
                     <AvatarFallback>
-                      {name.split(' ').map(n => n[0]).join('')}
+                      {contributor.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
                   <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-1 shadow-lg">
-                    <Trophy className="h-6 w-6" style={{ color: colors[idx % colors.length] }} />
+                    <contributor.icon className="h-6 w-6" style={{ color: contributor.color }} />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <h4 className="font-semibold">{name}</h4>
-                  <p className="text-sm font-medium text-primary" style={{ color: colors[idx % colors.length] }}>
-                    Top Performer
+                  <h4 className="font-semibold">{contributor.name}</h4>
+                  <p className="text-sm font-medium text-primary" style={{ color: contributor.color }}>
+                    {contributor.award}
                   </p>
-                  <BestContributorForm
-                    investmentType={investmentTypes[name] || ""}
-                    onInvestmentTypeChange={t =>
-                      setInvestmentTypes(types => ({ ...types, [name]: t }))
-                    }
-                  />
+                  <BestContributorForm award={contributor.award} />
                 </div>
               </div>
             ))}

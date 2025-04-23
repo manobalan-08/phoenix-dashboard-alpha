@@ -1,27 +1,17 @@
 
 import React from "react";
-import { Input } from "@/components/ui/input";
 
-interface ContributorInvestmentProps {
-  investmentType: string;
-  onInvestmentTypeChange: (value: string) => void;
+interface BestContributorAwardProps {
+  award: string;
 }
 
-export const BestContributorForm: React.FC<ContributorInvestmentProps> = ({
-  investmentType,
-  onInvestmentTypeChange,
-}) => {
+export const BestContributorForm: React.FC<BestContributorAwardProps> = ({ award }) => {
   return (
     <div className="mt-2">
-      <label className="block text-sm mb-1 font-medium">
-        Investment Type
+      <label className="block text-sm mb-1 font-medium text-gray-700">
+        Award Category
       </label>
-      <Input
-        placeholder="e.g. Mutual Fund, Equity"
-        value={investmentType}
-        onChange={(e) => onInvestmentTypeChange(e.target.value)}
-        className="w-full"
-      />
+      <div className="text-base font-semibold text-primary">{award}</div>
     </div>
   );
 };
