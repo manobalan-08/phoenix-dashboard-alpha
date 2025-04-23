@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +12,7 @@ import Funds from "./pages/Funds";
 import Investments from "./pages/Investments";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
+import AiAdvisor from "./pages/AiAdvisor";
 
 function App() {
   const queryClient = new QueryClient();
@@ -48,6 +48,11 @@ function App() {
             <Route path="/settings" element={
               <DashboardLayout>
                 <Settings />
+              </DashboardLayout>
+            } />
+            <Route path="/ai-advisor" element={
+              <DashboardLayout>
+                <AiAdvisor />
               </DashboardLayout>
             } />
             <Route path="*" element={<NotFound />} />

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -11,6 +10,7 @@ import {
 } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import { Search, Mail, Phone } from "lucide-react";
+import { ScrumBoard } from "@/components/employees/ScrumBoard";
 
 const employees = [
   { id: 1, name: "Manobalan M", role: "Software Engineer", status: "Active", email: "manobalan@startup.com", phone: "+91 98765 43210", department: "Engineering" },
@@ -25,7 +25,6 @@ const employees = [
   { id: 10, name: "Jayavarshini", role: "Content Writer", status: "Active", email: "jayavarshini@startup.com", phone: "+91 99012 34567", department: "Marketing" },
   { id: 11, name: "Adarsha", role: "Systems Administrator", status: "Active", email: "adarsha@startup.com", phone: "+91 93216 54789", department: "IT" },
   { id: 12, name: "Logavarshini", role: "Customer Support", status: "Active", email: "logavarshini@startup.com", phone: "+91 96543 21098", department: "Support" },
-  // New employees
   { id: 13, name: "Sri Vignesh S", role: "DevOps Engineer", status: "Active", email: "srivignesh@startup.com", phone: "+91 96452 34567", department: "Engineering" },
   { id: 14, name: "Uma maheshwari", role: "QA Tester", status: "Active", email: "uma@startup.com", phone: "+91 98712 34598", department: "Product" },
 ];
@@ -106,6 +105,8 @@ export default function Employees() {
           </Table>
         </CardContent>
       </Card>
+
+      <ScrumBoard />
     </div>
   );
 }

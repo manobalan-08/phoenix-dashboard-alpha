@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import {
@@ -11,6 +11,7 @@ import {
   ChevronRight,
   Wallet,
   PiggyBank,
+  kanban,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -22,7 +23,7 @@ interface SidebarProps {
 export function Sidebar({ isMobile, expanded, setExpanded }: SidebarProps) {
   const navItems = [
     {
-      title: "Dashboard",
+      title: "The Nanba's Board",
       href: "/",
       icon: <LayoutDashboard size={20} />,
     },
@@ -47,6 +48,11 @@ export function Sidebar({ isMobile, expanded, setExpanded }: SidebarProps) {
       icon: <BarChart3 size={20} />,
     },
     {
+      title: "AI Advisor",
+      href: "/ai-advisor",
+      icon: <kanban size={20} />, // using allowed icon
+    },
+    {
       title: "Settings",
       href: "/settings",
       icon: <Settings size={20} />,
@@ -57,7 +63,7 @@ export function Sidebar({ isMobile, expanded, setExpanded }: SidebarProps) {
     <>
       {isMobile && (
         <div className="flex items-center p-4 justify-between bg-white border-b md:hidden">
-          <div className="font-semibold text-lg">StartupDash</div>
+          <div className="font-semibold text-lg">The Nanba's Board</div>
           <button
             onClick={() => setExpanded(!expanded)}
             className="p-2 rounded-md hover:bg-gray-100"
@@ -77,7 +83,7 @@ export function Sidebar({ isMobile, expanded, setExpanded }: SidebarProps) {
         <div className="flex flex-col h-full">
           <div className="p-4 flex items-center justify-between">
             {expanded && (
-              <div className="font-semibold text-lg">StartupDash</div>
+              <div className="font-semibold text-lg">The Nanba's Board</div>
             )}
             {!isMobile && (
               <button
