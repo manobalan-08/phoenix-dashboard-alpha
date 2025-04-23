@@ -1,6 +1,8 @@
 
 import React from "react";
 import { Card } from "@/components/ui/card";
+import { InvestmentsForm } from "@/components/forms/InvestmentsForm";
+import { Calculator } from "@/components/shared/Calculator";
 
 const Investments = () => {
   return (
@@ -9,11 +11,10 @@ const Investments = () => {
         <h1 className="text-3xl font-bold">Investment Portfolio</h1>
       </div>
       
-      <Card className="p-6">
+      <Card className="p-6 mb-4">
         <h2 className="text-xl font-semibold mb-4">Investment Overview</h2>
-        <p className="text-muted-foreground">
-          This section will display the company's investment portfolio and tracking.
-        </p>
+        <InvestmentsForm />
+        <Calculator title="Investment Calculator" />
       </Card>
     </div>
   );

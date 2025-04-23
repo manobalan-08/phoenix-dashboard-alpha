@@ -25,6 +25,25 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import { BestContributorForm } from "@/components/dashboard/BestContributorForm";
+
+// List of your employees (from Employees page)
+const employeeList = [
+  "Manobalan M",
+  "Akshaya M",
+  "Gayathry",
+  "Dheeraj",
+  "Vikash S",
+  "Vomkar BS",
+  "Theya KS",
+  "Swathy",
+  "Abhishri",
+  "Jayavarshini",
+  "Adarsha",
+  "Logavarshini",
+];
+
+import React, { useState } from "react";
 
 const salesData = [
   { name: "Jan", amount: 4000 },
@@ -83,6 +102,17 @@ const bestContributors = [
 ];
 
 export default function Dashboard() {
+  // Manage investment type input for each contributor
+  const [investmentTypes, setInvestmentTypes] = useState<{[name: string]: string}>({});
+
+  // Show top 3 best contributors, rest can be omitted for now
+  const topContributors = employeeList.slice(0, 3);
+
+  // You may adapt the original "bestContributors" UI to just take employee names
+  const colors = ["#9b87f5", "#7E69AB", "#6E59A5"];
+  // Lucide icon
+  import { Trophy } from "lucide-react";
+
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
@@ -121,34 +151,35 @@ export default function Dashboard() {
             <Trophy className="h-6 w-6 text-primary" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {bestContributors.map((contributor) => {
-              const Icon = contributor.icon;
-              return (
-                <div
-                  key={contributor.name}
-                  className="flex flex-col items-center text-center space-y-4 p-4 rounded-lg hover:bg-accent transition-colors"
-                >
-                  <div className="relative">
-                    <Avatar className="h-24 w-24 border-4" style={{ borderColor: contributor.color }}>
-                      <AvatarImage src={contributor.image} alt={contributor.name} />
-                      <AvatarFallback>{contributor.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                    </Avatar>
-                    <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-1 shadow-lg">
-                      <Icon className="h-6 w-6" style={{ color: contributor.color }} />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="font-semibold">{contributor.name}</h4>
-                    <p className="text-sm font-medium text-primary" style={{ color: contributor.color }}>
-                      {contributor.award}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {contributor.description}
-                    </p>
+            {topContributors.map((name, idx) => (
+              <div
+                key={name}
+                className="flex flex-col items-center text-center space-y-4 p-4 rounded-lg hover:bg-accent transition-colors"
+              >
+                <div className="relative">
+                  <Avatar className="h-24 w-24 border-4" style={{ borderColor: colors[idx % colors.length] }}>
+                    <AvatarFallback>
+                      {name.split(' ').map(n => n[0]).join('')}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-1 shadow-lg">
+                    <Trophy className="h-6 w-6" style={{ color: colors[idx % colors.length] }} />
                   </div>
                 </div>
-              );
-            })}
+                <div className="space-y-2">
+                  <h4 className="font-semibold">{name}</h4>
+                  <p className="text-sm font-medium text-primary" style={{ color: colors[idx % colors.length] }}>
+                    Top Performer
+                  </p>
+                  <BestContributorForm
+                    investmentType={investmentTypes[name] || ""}
+                    onInvestmentTypeChange={t =>
+                      setInvestmentTypes(types => ({ ...types, [name]: t }))
+                    }
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </Card>
 
